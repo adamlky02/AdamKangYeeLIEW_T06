@@ -9,7 +9,6 @@ d3.csv("data/Ex6_TVdata.csv", d => ({
     console.log(data);
 
     drawHistogram(data);
-    drawScatterplot(data);
     populateFilters(data);
 
     createTooltip();
