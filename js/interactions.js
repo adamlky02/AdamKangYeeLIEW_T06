@@ -1,3 +1,7 @@
+// module-scoped tooltip references so we don't rely on innerChartS variable
+let tooltipEl = null;
+let isSvgTooltip = false;
+
 const populateFilters = (data) => {
     d3.select("#filters_screen")
         .selectAll(".filter")
@@ -43,13 +47,44 @@ const populateFilters = (data) => {
 }
 
 const createTooltip = () => {
+    if (tooltipEl) return tooltipEl;
+
+    const inner = d3.select("#scatterplot").select("svg").select("g");
+    if (!inner.empty()) {
+        inner.selectAll(".tooltip").remove();
+
+        const g = inner.append("g")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        g.append("rect")
+            .attr("width", tooltipWidth)
+            .attr("height", tooltipHeight)
+            .attr("fill", barColor)
+            .attr("rx", 3)
+            .attr("ry", 3)
+            .attr("opacity", 0.75);
+
+        g.append("text")
+            .text("NA")
+            .attr("x", tooltipWidth / 2)
+            .attr("y", tooltipHeight / 2 + 2)
+            .attr("text-anchor", "middle")
+            .attr("alignment-baseline", "middle")
+            .attr("fill", "white")
+            .style("font-weight", 900);
+
+        tooltipEl = g;
+        isSvgTooltip = true;
+        return tooltipEl;
+
 
 }
 
-const tooltip = innerChartS
-    .append("g")
-    .attr("class", "tooltip")
-    .style("opacity", 0)
 
+
+const handleMouseEvent = () =>{
+
+}
 
 
