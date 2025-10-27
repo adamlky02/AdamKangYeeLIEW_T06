@@ -13,8 +13,13 @@ const drawHistogram = (data) => {
     const maxEng = bins[bins.length - 1].x1;
     const binsMaxLength = d3.max(bins, d => d.length);
 
-    xScale.domain([minEng, maxEng]).range([0, innerwidth]);
-    yScale.domain([0, binsMaxLength]).range([innerheight, 0]).nice();
+    xScale
+        .domain([minEng, maxEng])
+        .range([0, innerwidth]);
+    yScale
+        .domain([0, binsMaxLength])
+        .range([innerheight, 0])
+        .nice();
 
     // Create the bars
     innerChart

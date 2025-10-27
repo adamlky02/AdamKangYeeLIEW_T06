@@ -4,10 +4,6 @@ const height = 400;
 const innerwidth = width - margin.left - margin.right;
 const innerheight = height - margin.top - margin.bottom;
 
-let innerChartS;
-
-const tooltipWidth = 65;
-const tooltipHeight = 32;
 
 // Colors for the bars
 const barColor = "#606464"; // grey
@@ -15,9 +11,6 @@ const barHoverColor = "#fffaf0"; // darker orange
 
 const xScale = d3.scaleLinear();
 const yScale = d3.scaleLinear();
-const xScaleS = d3.scaleLinear();
-const yScaleS = d3.scaleLinear();
-const colorScale = d3.scaleOrdinal();
 
 const binGenerator = d3.bin()
     .value(d => d.energyConsumption)
