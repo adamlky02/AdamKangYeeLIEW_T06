@@ -22,8 +22,6 @@ const xScaleS = d3.scaleLinear();
 const yScaleS = d3.scaleLinear();
 const colorScaleS = d3.scaleOrdinal()
 
-const tooltipWidth = 65;
-const tooltipHeight = 32;
 
 const filters_screen = [
     { id: "all", label: "All", isActive: true },

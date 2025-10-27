@@ -7,7 +7,6 @@ const drawScatterPlot = (data) => {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-
     const xExtent = d3.extent(data, d => d.star);
     const yExtent = d3.extent(data, d => d.screenSize);
 
