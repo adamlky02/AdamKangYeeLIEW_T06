@@ -42,6 +42,14 @@ const populateFilters = (data) => {
 
 }
 
+const createTooltip = () => {
+
+}
+
+const tooltip = innerChartS
+    .append("g")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
 
 
 
