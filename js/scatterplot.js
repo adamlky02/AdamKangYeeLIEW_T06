@@ -78,3 +78,6 @@ const drawScatterPlot = (data) => {
         .attr('Class','axis-label');
     });
 }
+
+
+
