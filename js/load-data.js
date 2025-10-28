@@ -13,6 +13,7 @@ d3.csv("data/Ex6_TVdata.csv", d => ({
     populateFilters(data);
 
     createTooltip();
+    handleMouseEvent()
 
 
 }).catch(error => {

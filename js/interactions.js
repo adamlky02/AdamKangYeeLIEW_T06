@@ -79,12 +79,55 @@ const createTooltip = () => {
         return tooltipEl;
 
 
+    };
+
 }
 
+const handleMouseEvent = () => {
+    // select the scatterplot inner group (works even if innerChartS var was never exposed)
+    const inner = d3.select("#scatterplot").select("svg").select("g");
+    if (inner.empty()) return;
 
+    // ensure tooltip exists (SVG or HTML fallback)
+    createTooltip();
 
-const handleMouseEvent = () =>{
+    inner.selectAll("circle")
+        .on("mouseover", (e, d) => {
+            console.log("Mouse entered circle", d);
 
-}}
+            if (isSvgTooltip) {
+                tooltipEl.select("text").text(d.screenSize);
+
+                const cx = +e.target.getAttribute("cx");
+                const cy = +e.target.getAttribute("cy");
+
+                tooltipEl
+                    .attr("transform", `translate(${cx - 0.5 * tooltipWidth}, ${cy - 1.5 * tooltipHeight})`)
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 1);
+            } else {
+                d3.select(".tooltip-html")
+                    .style("left", (e.pageX + 8) + "px")
+                    .style("top", (e.pageY - 8) + "px")
+                    .style("display", "block")
+                    .text(`Screen Size: ${d.screenSize}`);
+            }
+        })
+        .on("mouseleave", (e, d) => {
+            console.log("Mouse left circle", d);
+
+            if (isSvgTooltip) {
+                tooltipEl
+                    .transition()
+                    .duration(150)
+                    .style("opacity", 0);
+            } else {
+                d3.select(".tooltip-html")
+                    .style("display", "none");
+            }
+        });
+};
+
 
 
