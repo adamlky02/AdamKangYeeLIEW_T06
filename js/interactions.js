@@ -19,7 +19,7 @@ const populateFilters = (data) => {
                     filter.isActive = d.id === filter.id ? true : false;
                 });
 
-                d3.selectAll(".#filters_screen .filter")
+                d3.selectAll("#filters_screen .filter")
                     .classed("active", filter => filter.id === d.id ? true : false);
 
                 updateHistogram(d.id, data);
@@ -29,7 +29,7 @@ const populateFilters = (data) => {
 
     const updateHistogram = (filterId, data) => {
 
-        const updatedData = filtedId === "all"
+        const updatedData = filterId === "all"
             ? data
             : data.filter(tv => tv.screenTech === filterId);
 
@@ -85,6 +85,6 @@ const createTooltip = () => {
 
 const handleMouseEvent = () =>{
 
-}
+}}
 
 

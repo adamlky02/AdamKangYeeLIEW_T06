@@ -34,6 +34,8 @@ const drawScatterPlot = (data) => {
         .attr("opacity", 0.5);
 
     const bottomAxisS = d3.axisBottom(xScaleS);
+    const uniqueTechs = Array.from(new Set(data.map(d => d.screenTech)));
+
 
     innerChartS
         .append("g")
